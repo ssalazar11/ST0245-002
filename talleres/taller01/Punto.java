@@ -13,10 +13,11 @@ public class Punto {
      * Se inicializan los atributos de clase
      */
     public Punto(double x, double y) {
-
+        return this.x;
+        return this.y;
     }
 
-    /**
+    /** 
      * Método para obtener la variable global x.
      *
      * @return eje coordenado x
