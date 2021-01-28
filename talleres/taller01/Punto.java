@@ -77,6 +77,8 @@ public class Punto {
      */
   
     public double distanciaEuclidiana(Punto otro) {
-        
+        double dx=this.x-this.y();
+        double dy=this.y-this.y();
+        return math.sqrt(math.pow(x,2)+math.pow(y,2));
     }
 }
