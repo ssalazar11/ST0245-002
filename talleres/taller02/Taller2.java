@@ -17,7 +17,7 @@ public class Recursivo{
         if(respuesta==0){
             return q;
           }
-          return gcd(q,p);
+        return gcd(q, p % q);
     }
 
     /**
@@ -48,20 +48,17 @@ public class Recursivo{
     *
     * @return verdadero si hay un subconjunto el cual su suma = target
     */
-    private static boolean SumaGrupo(int start, int[] nums, int target) {
-        System.out.println(start+ " " +target);
-        if(start>=nums.length){
-            if(target==0){
-                return false;
-               }else{
-                   return true;
-               }
-           }else{
-               boolean universo=sumaGrupo(start+ " "
-           }
-           
-    }
-    
+    private static boolean grupoSuma(int start, int[] nums, int target) {
+    if (start == nums.length)
+          if (target == 0)
+        return true;
+      else
+        return false;
+        //else
+          boolean respuestaSi = grupoSuma(start+1,nums,target - nums[start]);
+          boolean respuestaNo = grupoSuma(start+1,nums,target);
+          return respuestaSi || respuestaNo;
+}
     /**
     * @param s se trata de una cadena de caracteres sobre la cual hallaremos las posibles combinaciones.
     *
