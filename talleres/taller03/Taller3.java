@@ -36,9 +36,16 @@ public class Taller3 {
 	* @see <a href="https://es.wikipedia.org/wiki/Torres_de_Han%C3%B3i"> Un poco de historia </a>
 	*/	
 	
-	private static void torresDeHannoiAux(int n, int origen, int intermedio, int destino) {
-		//...
-	}
+	
+	private static void torresDeHanoiAux(int n, int origen,  int intermedio, int destino){
+  if(n==1)
+  System.out.println("Disk 1 from " + origen + " to " + destino);
+  else{
+     torresDeHanoiAux(n-1, origen, destino, intermedio);
+     System.out.println(" Disk "+ n +" from " origen + " to " + destino);
+     Hanoi(n-1, intermedio, origen, destino);
+    }
+}	
 		
 
 		
