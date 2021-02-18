@@ -20,7 +20,12 @@ public class Taller4 {
 	* @return la suma
 	*/
 	public static int arrayMax(int[] array, int n) {
-		//...
+		int max, temp, i;
+		max=array[i];
+		if(n!=0){
+			temp=arrayMax(array, n-1);
+			
+		}
 	}
     
     /**
