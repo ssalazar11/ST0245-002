@@ -24,6 +24,9 @@ public class Taller4 {
 		max=array[i];
 		if(n!=0){
 			temp=arrayMax(array, n-1);
+			if(temp>max){
+				return max;
+			}
 			
 		}
 	}
