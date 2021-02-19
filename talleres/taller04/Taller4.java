@@ -46,7 +46,9 @@ public class Taller4 {
 	* @return verdadero si hay una combinación que suponga el valor target, falso de lo contrario
 	*/
 	public static boolean groupSum(int start, int[] nums, int target) {
-        //...
+        if (start >= nums . length) return target ==  0 ;
+		return groupSum (inicio + 1 , números, destino - números [start])
+		    || groupSum (start+1, nums,target);
     }
 	
 	
