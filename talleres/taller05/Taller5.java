@@ -18,7 +18,11 @@ public class Taller5 {
     * @return la suma de todos los numeros sumados.
     */
     public static int suma (int[]array){
-      //...
+        int suma=0;
+        for(int i=0; i<array.length;i++){
+            suma+=array[i];
+        }
+        return suma;
     }
     
     
@@ -43,6 +47,10 @@ public class Taller5 {
     * 
     */
     public static int[] insertionSort (int[] array){
-        //...
+        int n=array.length;
+        for(int i=1;i<n;i++){
+            for(int y=i;t>=0;j--)
+        }
+        }
     }    
 }
