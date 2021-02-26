@@ -47,10 +47,16 @@ public class Taller5 {
     * 
     */
     public static int[] insertionSort (int[] array){
-        int n=array.length;
-        for(int i=1;i<n;i++){
-            for(int y=i;t>=0;j--)
+        int y=0;
+        int temp=0;
+        for(int i=0;i<array.length;i++){
+            y=i;
+            temp=array[y];
+            while(y>0 && array[i]>temp){
+                array[y]=array[y-1];
+                y++;
+            }
+            array[y]=temp;
         }
-        }
-    }    
-}
+        return array;
+    }
