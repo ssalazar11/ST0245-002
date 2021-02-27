@@ -17,25 +17,27 @@ public class Taller5 {
     * mediante una funcion cíclica (while/for/...)
     * @return la suma de todos los numeros sumados.
     */
-    public static int suma (int[]array){
-        int suma=0;
-        for(int i=0; i<array.length;i++){
-            suma+=array[i];
-        }
-        return suma;
-    }
+            public class ejercicio2{
+    
+ static double dif;
+ long inicio = System.nanoTime();
     
     
-    /**
-    * @param num es el numero el cual se utiliza para ser multiplicado.
-    * El método mul tiene la intención de hacer la multiplicación
-    * de 1 a n por el numero mul
-    * mediante una funcion cíclica (while/for/...)
-    * 
-    */
-    public static void mul (int num){
-      //...
+    public  int  suma ( int [] array ) {
+    int suma = 0 ;
+    for ( int i = 0 ; i < array . length; i ++ ) {
+        suma = suma + array [i];
     }
+    long fin = System.nanoTime();
+    dif = (fin - inicio) * 1.0e-9;	
+    return suma;
+}
+  	
+ public static void main(String[] args) {		
+ System.out.println("El programa dura " + dif + " s");
+		
+}  
+}  
     
     
     /**
@@ -46,17 +48,32 @@ public class Taller5 {
     * mediante la anidación de funciones cíclicas (while/for/...)
     * 
     */
-    public static int[] insertionSort (int[] array){
-        int y=0;
-        int temp=0;
-        for(int i=0;i<array.length;i++){
-            y=i;
-            temp=array[y];
-            while(y>0 && array[i]>temp){
-                array[y]=array[y-1];
+    
+               public class ejercicio1{
+    static double dif;
+    long inicio = System.nanoTime();
+    public int[] insertionSort(int[] array) {
+         
+        int y = 0;
+        int temp = 0;
+        for (int i = 0; i < array.length; i++) { 
+            y = i;
+            temp = array[y];
+            while (y > 0 && array[i] > temp) {
+                array[y] = array[y - 1];
                 y++;
             }
-            array[y]=temp;
+            array[y] = temp;
         }
+        long fin = System.nanoTime();
+        dif = (fin - inicio) * 1.0e-9;
+        
         return array;
+
     }
+    public static void main(String[] args) {
+    
+        System.out.println("El programa dura " + dif + " s");
+    }
+}
+
