@@ -31,17 +31,11 @@ public class Laboratory1 {
      * @return length of the largest common sequence between two strings
      */
     private static int lcsDNAAux(String string1, String string2, int m, int n) {
-        ...
+        if(string1.length()==0||string2.length()==0){
+            return 0;
+        }
+        if(string1.charAt(m-1)==string2.charAt(n-1)){
+            return 1+lcsDNAAux(string1.substring(0,m)-1, string2.substring(0,n).1);
+            return Math.max(lcsDNAAux(string1.substring(0,m-1)), lcsDNAAux(string2.substring(0,n-1)));
+        }
     }
-    /**
-     * This method calculates how many ways there are for organizing rectangles
-     * of 1x2 in a rectangle of 2xn
-     * @param n side n of the rectangle 2xn
-     * @return number of ways that rectangles of 1x2 can be organized 
-     * in a rectangle of 2xn
-     */
-    public static int ways(int n){
-        ...
-    }
-
-}
