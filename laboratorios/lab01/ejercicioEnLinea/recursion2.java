@@ -6,46 +6,45 @@
 @param target es el valor objetivo
 @return verdadero si las sumas de los enteros es igual al falso, de lo contrario retornar un falso
 
-public boolean groupSum5(int start, int[] nums, int target) {
-    if(start >= nums.length)   //c1=4
-          return target == 0; 
-      if(nums[start] % 5 == 0) {
-          if(start <= nums.length - 2 && nums[start+1] == 1)
-              return groupSum5(start+2, nums, target - nums[start]);
-          return groupSum5(start+1, nums, target - nums[start]);
-      }
-      if(groupSum5(start+1, nums, target - nums[start]))
-          return true;
-      if(groupSum5(start+1, nums, target))
-          return true;
-      return false;
-  }
+public boolean groupSum6(int start, int[] nums, int target) {
+  if(start >= nums.length)
+        return target == 0;
+          
+    if(nums[start] == 6)
+        return groupSum6(start+1, nums, target - 6);
+                    
+    if(groupSum6(start+1, nums, target - nums[start]))
+        return true;
+                              
+    if(groupSum6(start+1, nums, target))
+        return true;
+                                        
+    return false;
+}
 
 @param start es el valor inicial
 @param nums es el arreglo de numeros enteros
-@param target es el valor objetivo
-@return verdadero si la sumas del arreglo son igual al objetivo, de lo contrario retornar un falso
+@param mult es donde se guarda el grupo con multiplo a diez
+@param odd es la variable donde se guarda el grupo impar
+@return verdadero si la suma de grupo uno es un multiplo de cinco y si la suma del grupo dos es impar, de lo contrario retornar un falso
 
-public boolean groupSumClump(int start, int[] nums, int target) {
+public boolean splitOdd10(int[] nums) {
+   return splitOdd10Helper(0, nums, 0, 0);
+}
+
+public boolean splitOdd10Helper(int start, int[] nums, int mult, int odd) {
     if(start >= nums.length)
-          return target == 0; //c1=4
+        return mult % 10 == 0 && odd % 2 == 1;
             
-      int i = start; //c2=1
-      int sum = 0; //c3=1
-      
-      while(i < nums.length && nums[start] == nums[i]) {
-          sum += nums[i]; //c4=7
-          i++;
-      }
+    if(splitOdd10Helper(start+1, nums, mult + nums[start], odd))
+        return true;
+                      
+    if(splitOdd10Helper(start+1, nums, mult, odd + nums[start]))
+        return true;
                                 
-      if(groupSumClump(i, nums, target - sum))
-          return true; //c5=3
-                                          
-      if(groupSumClump(i, nums, target))
-          return true;
-                                                    
-      return false;
-  }
+    return false;
+}
+
 
 @param start es el valor inicial
 @param nums es el arreglo con los enteros
@@ -78,6 +77,7 @@ public boolean split53(int[] nums) {
 @param nums es el arreglo de los enteros
 @param target es el valor objetivo
 @return verdadero si la suma del grupo es igual al valor objetivo, de lo contrario retornar falso
+
 public boolean groupNoAdj(int start, int[] nums, int target) {
     if(start >= nums.length)
           return target == 0;
