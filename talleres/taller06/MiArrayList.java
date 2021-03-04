@@ -24,7 +24,8 @@ public class MiArrayList {
     * El contructor no lleva parámetros en este caso.
     */
     public MiArrayLis() {
-        //...
+        array = new int[DEFAULT-SIZE];
+        size=0;
     }     
 
     
@@ -35,7 +36,7 @@ public class MiArrayList {
     * El size esta influenciado por las funciones add y del
     */
     public int size() {
-        //...
+        return size;
     }   
     
     /** 
@@ -44,7 +45,7 @@ public class MiArrayList {
     *
     */
     public void add(int e) {
-        //...
+        add(size,e);
     }    
     
     
@@ -54,7 +55,11 @@ public class MiArrayList {
     *
     */
     public int get(int i) {
-        //...
+        if(i<size||i>0){
+            return array[i];
+        }else{
+            throw new IndexOutOfBoundsException("index: "+i);
+        }
     }
     
     
@@ -65,7 +70,7 @@ public class MiArrayList {
     *
     */
     public void add(int index, int e) {
-        //...
+        if(
     } 
 
     /**
