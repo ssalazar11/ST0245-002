@@ -70,7 +70,19 @@ public class MiArrayList {
     *
     */
     public void add(int index, int e) {
-        if(
+        if(index<size&&e<=0){
+            for(int i==0;i<=size;i++){
+                if(i==size && size=array.length){
+                    extend();
+                }
+               if(i==index){
+                   int swap=e;
+                   array[i+1]=swap;
+                   i++;
+                   size++;
+               } 
+            }
+        }else if(
     } 
 
     /**
