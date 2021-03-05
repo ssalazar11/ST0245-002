@@ -70,7 +70,7 @@ public class MiArrayList {
     *
     */
     public void add(int index, int e) {
-        if(index<size&&e<=0){
+        if(index<size&&e>=0){
             for(int i==0;i<=size;i++){
                 if(i==size && size=array.length){
                     extend();
@@ -84,7 +84,7 @@ public class MiArrayList {
             }
         }else if(
     } 
-
+            
     /**
     * @param index es la posicion en la cual se va eliminar el elemento
     *
@@ -92,6 +92,8 @@ public class MiArrayList {
     *
     */
     public void del(int index){
-        //...
+        for(int i=0; i<=array.length;i++){
+            array[index]=0;
+        }
     }
 }
