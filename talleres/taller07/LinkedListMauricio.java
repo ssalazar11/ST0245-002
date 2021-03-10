@@ -41,13 +41,24 @@ public LinkedListMauricio()
 // Retorna el tamaño actual de la lista
 public int size()
 {
-	...
+	return size;
 }
 
 // Inserta un dato en la posición index
 public void insert(int data, int index)
 {
-	...
+	if(index==0){
+		Node nuevo= new Node(data);
+		nuevo.next=first;
+		first=nuevo;
+		size++;
+	}else if(index!=0){
+		Node temp=getNode(index-1);
+		Node nuevo=new Node(data);
+		nuevo.next=temp.next;
+		temp.next=nuevo;
+		size++
+	}
 }
 
 // Borra el dato en la posición index
