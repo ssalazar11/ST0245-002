@@ -82,7 +82,11 @@ public void remove(int index)
 // Verifica si está un dato en la lista
 public boolean contains(int data)
 {
-	...
+	for(int i=0; i<size; i++){
+		if(get(i)==data){
+			return true;
+		}
+	}
 }
 
 }
