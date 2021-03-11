@@ -64,7 +64,19 @@ public void insert(int data, int index)
 // Borra el dato en la posición index
 public void remove(int index)
 {
-	...
+	if(index==0){
+		Node temp= first;
+		first=temp.next;
+		size--;
+	}else if(index==size-1){
+		Node temp=getNode(size-2);
+		temp.next=null;
+		size--;
+	}else{
+		Node temp=getNode(index-1);
+		temp.next=temp.next.next;
+		size--;
+	}
 }
 
 // Verifica si está un dato en la lista
