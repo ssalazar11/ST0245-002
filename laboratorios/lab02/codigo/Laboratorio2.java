@@ -2,7 +2,7 @@
 /**
  * Laboratorio 2 de Estructuras de Datos 1
  * 
- * @author Mauricio Toro 
+ * @author Samuel Salazar Salazar/Carla Sofía Rendón
  * @version 1
  */
 
@@ -13,16 +13,17 @@ public class Laboratorio2
 
   
   // Sorts an array using Insertion Sort
-  public static void InsertionSort(int[] A)
+  public static void InsertionSort(int[] arr)
   {
-    for (int i=1; i<a.length;i++){
-            int key=a[i];
-            int j=i-1;
-            while(j>=0 && a[j]>key){
-                a[j+1]=a[j];
-                j--
+    int temp,j;
+        for(int i=0; i<arr.length; i++){
+            j=i;
+            while(j>0 && arr[j-1]>arr[j]){
+                temp=arr[j];
+                arr[j]=arr[j-1];
+                arr[j-1]=temp;
+                j--;
             }
-            a[j+1]=key;
         }
   }
 
@@ -36,13 +37,39 @@ public class Laboratorio2
         // Sorts an array using Merge Sort
 	private static void mergeSort(int [ ] a, int [ ] tmp, int left, int right)
 	{
-
+		if( left < right )
+		{
+			int center = (left + right) / 2;
+			mergeSort(a, tmp, left, center);
+			mergeSort(a, tmp, center + 1, right);
+			merge(a, tmp, left, center + 1, right);
+		}
+	}
 	}
 
     // Merges two sorted arrays
     private static void merge(int[ ] a, int[ ] tmp, int left, int right, int rightEnd )
     {
-       
+	    int leftEnd = right - 1;
+        int k = left;
+        int num = rightEnd - left + 1;
+
+        while(left <= leftEnd && right <= rightEnd)
+            if(a[left] <= a[right] )
+                tmp[k++] = a[left++];
+            else
+                tmp[k++] = a[right++];
+
+        while(left <= leftEnd)    
+            tmp[k++] = a[left++];
+
+        while(right <= rightEnd)  
+            tmp[k++] = a[right++];
+
+        // Copy tmp back
+        for(int i = 0; i < num; i++, rightEnd--)
+            a[rightEnd] = tmp[rightEnd];
+    }
     }
   
   public static void main(String[] args)
