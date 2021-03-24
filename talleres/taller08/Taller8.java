@@ -18,7 +18,8 @@ public class Taller8 {
     * @return un entero resultado de la operación
     */
     public static int polaca  (String string){
-        //...
+	    String[]prefijo=String.split(" ");
+	    Stack<integer> stack=new Stack<>();
     }
 
     /**
