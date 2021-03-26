@@ -46,36 +46,48 @@ public class Taller8 {
 	    return stack.pop;
     }
 
-    /**
-    * @param neveras es una estructura de datos para representar el almacen con las neveras
-    * @param solicitudes es una estructura de datos para representar las solicitudes
-    */
-    public static void asignarSolicitudes  (??? neveras, ??? solicitudes){
-        //...
+   /**
+     * @param neveras es una estructura de datos para representar el almacen con las neveras
+     * @param solicitudes es una estructura de datos para representar las solicitudes
+     */
+    public static void asignarSolicitudes(Stack<Nevera> neveras, Queue<Solicitud> solicitudes){
+        while(solicitudes.peek() != null){
+            int cantidad = solicitudes.peek().numero;
+            System.out.println(solicitudes.poll().texto()+": ");
+
+            for(int i=0; i<cantidad; i++){
+                if(!neveras.isEmpty()){
+                    System.out.println("   -> "+ neveras.pop().texto());
+                }
+            }
+        }
     }
-	
+
     /**
-    * @param stack es una pila ya implementada que se crea en el test
-    * Este método se encarga de poner la pila stack en orden inverso
-    * Nota: recuerde que la funcion pop() no solo expulsa la última 
-    * posición de una pila si no que tambien devuelve su valor.
-    * @return una pila que haga el inverso de stack
-    */
+     * @param stack es una pila ya implementada que se crea en el test
+     * Este método se encarga de poner la pila stack en orden inverso
+     * Nota: recuerde que la funcion pop() no solo expulsa la última 
+     * posición de una pila si no que tambien devuelve su valor.
+     * @return una pila que haga el inverso de stack
+     */
     public static Stack<Integer> inversa (Stack<Integer> stack){
-        //...
+        int n = stack.size();
+        Stack<Integer> temp = new Stack<Integer>();
+        for(int i = 0; i < n; i++) 
+            temp.get(stack.pop());
+        return temp;
     }
-    
-    
+
     /**
-    * @param queue es una cola ya implementada que se crea en el test
-    * Este método se encarga de atender a personas.
-    * Nota: Se debe imprimir en consola a quién atiende y sacarlo de la cola
-    * existe una función "pull" que hace el trabajo más fácil
-    * 
-    */
-    public static void cola (Queue<String> queue){
-        //...
+     * @param queue es una cola ya implementada que se crea en el test
+     * Este método se encarga de atender a personas.
+     * Nota: Se debe imprimir en consola a quién atiende y sacarlo de la cola
+     * existe una función "pull" que hace el trabajo más fácil
+     * 
+     */
+    public static void cola(Queue<String> que){
+        while(!que.isEmpty())    
+            System.out.println("Atendiendo a " + que.poll());
     }
-    
-   
+
 }
