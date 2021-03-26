@@ -1,5 +1,5 @@
 package Taller__8;
-import java.util.*;
+import java.util.stack;
 
 /**
  * La clase Taller8 tiene la intención de
@@ -18,8 +18,32 @@ public class Taller8 {
     * @return un entero resultado de la operación
     */
     public static int polaca  (String string){
-	    String[]prefijo=String.split(" ");
+	    String simbolos="+*/-";
+	    prefijo=String.split(" ");
 	    Stack<integer> stack=new Stack<>();
+	    
+	    for(int i=0; i<string.length;i++){
+		    if(simbolos.contains(""+string.charAt(i))){
+			    int primero=stack.pop();
+			    int segundo=stack.pop();
+			    char caracter=string.charAt(i);
+			    if(caracter="+"){
+				    stack.push(segundo+primero);
+			    }
+			    if(caracter="-"){
+				    stack.push(segundo-primero);
+			    }
+			    if(caracter="*"){
+				    stack.push(segundo*primero);
+			    }
+			    if(caracter="/"){
+				    stack.push(segundo/primero);
+			    }
+		    }else{
+			     stack.push(Integer.valueOf(string.charAt(i)));
+		    }
+	    }
+	    return stack.pop;
     }
 
     /**
