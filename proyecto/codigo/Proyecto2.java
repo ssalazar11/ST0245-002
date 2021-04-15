@@ -1,29 +1,39 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
 public class Proyecto2{
-public static void main(String[] args) {
-ArrayList<int[]> foto = new ArrayList<int[]>();
-ArrayList<int[]> fotoCompri = new ArrayList<int[]>();
-int[] datos ={1,2,3,4,5};
-foto.add(datos);
-foto.add(datos); 
-foto.add(datos);  
-foto.add(datos);   
-foto.add(datos); 
-
-   
- for(int y = 0; y < foto.size();y++){
-    
-                for(int x = 0; x < foto.get(0).length;x++){
-
-          
-                    System.out.print("["+foto.get(y)[x]+"]");
-
-
+    public static void main(String[] args){
+        //Al probar el programa, porfavor cambiar el pat
+        ArrayList<int[]> foto = new ArrayList<int[]>();
+        String path="C:/Users/Usuario/Documents/ganado/0.csv";
+        String linea=" ";
+        try{
+            BufferedReader br= new BufferedReader(new FileReader(path));
+            
+            while((linea=br.readLine())!=null){
+            String[] valores = linea.split(",");
+            int[] elementos = new int[valores.length];
+            for(int i = 0; i < valores.length; i++){
+                
+                int valor = Integer.parseInt(valores[i]);
+                elementos[i] = valor;
+            }
+            foto.add(elementos);
+            }
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
         }
-        System.out.println("");
-       }
-         System.out.println("              ");   
-
+        
+      
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   
+ArrayList<int[]> fotoCompri = new ArrayList<int[]>();
 
 int fx = 0;
 int cy= 0;  
@@ -57,7 +67,7 @@ for(int x=0;x<foto.get(0).length-2;x = x+2){
   cy = cy + 1; 
 }   
    
-   System.out.println(" ");
+ 
    
  for(int y = 0; y < fotoCompri.size();y++){
     
@@ -70,7 +80,11 @@ for(int x=0;x<foto.get(0).length-2;x = x+2){
         }
         System.out.println("");
        }
-         System.out.println("              ");   
+         System.out.println("    termino          ");   
+   
+   
+   
+
    
    
    
@@ -78,11 +92,17 @@ for(int x=0;x<foto.get(0).length-2;x = x+2){
    
    
    
-   
-   
-   
-   
-   
-   
-  } 
-  }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+}
