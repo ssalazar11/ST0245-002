@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Arrays;
 public class Proyecto2{
     public static void main(String[] args){
-        //Al probar el programa, porfavor cambiar el pat
+        //Al probar el programa, porfavor cambiar el path
         ArrayList<int[]> foto = new ArrayList<int[]>();
         String path="C:/Users/Usuario/Documents/ganado/0.csv";
         String linea=" ";
