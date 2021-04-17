@@ -30,7 +30,21 @@ public class BinaryTree {
 	* Inserta un dato respetando claro las desigualdades en el árbol
 	*/
     private void insertarAux(Node node, int n) {
-        //...
+	    if(node.data==null){
+		    return;
+	    }else if(n<=node){
+		    if(left==null){
+			    left=new node(n);
+		    }else {
+			    insertarAux(node,n);
+		    }
+	    }else{
+		    if(right==null){
+			    right=new node(n);
+		    }else{
+			    insertarAux(node, n);
+		    }
+	    }
     }
 
     /**
@@ -51,7 +65,13 @@ public class BinaryTree {
 	*/ 
 
 	private boolean buscarAux(Node node, int n) {
-	   //..
+		if(node.data==n){
+			return true;
+		} else if(n<node){
+			if(left==null){
+				return false;
+			}
+		}
     }
 	
     /**
