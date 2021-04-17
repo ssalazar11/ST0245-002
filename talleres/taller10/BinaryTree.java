@@ -70,6 +70,14 @@ public class BinaryTree {
 		} else if(n<node){
 			if(left==null){
 				return false;
+			}else{
+				return left.buscarAux(node, n);
+			}
+		}else{
+			if(right==null){
+				return false;
+			}else{
+				return right.buscarAux(node,n);
 			}
 		}
     }
