@@ -81,27 +81,41 @@ public class BinaryTree {
 			}
 		}
     }
-	
-    /**
-	* @param n el dato del nodo que se busca borrar.
-	* Metodo auxiliar de buscarAux.
-	* 
-	*/
+	/**
+     * @param n el dato del nodo que se busca borrar.
+     *          Metodo auxiliar de buscarAux.
+     */
     public void borrar(int n) {
         borrarAux(root, n);
     }
-    
+
     /**
-	* @param node es la raíz del arbol
-	* @param n el data del nodo que se busca borrar
-	* nota: metodo recursivo.
-	* borra un dato respetando claro las desigualdades en el árbol
-	*/ 
-     private Node borrarAux(Node node, int n) {
-        //..
+     * @param node es la raíz del arbol
+     * @param n    el data del nodo que se busca borrar
+     *             nota: metodo recursivo.
+     *             borra un dato respetando claro las desigualdades en el árbol
+     */
+    private Node borrarAux(Node node, int n) {
+        if (node.data == n) {
+            if (node.left == null && node.right == null) {
+                return null;
+            }
+            if (node.right == null) {
+                return node.left;
+            }
+            if (node.left == null) {
+                return node.right;
+            } else {
+                node.data = encontrarNodoReemplazo(node.left);
+            }
+        }
+        if (n > node.data) {
+            node.right = borrarAux(node.right, n);
+            return node;
+        }
+        node.left = borrarAux(node.left, n);
+        return node;
     }
-
-
 
     /*
 	 
