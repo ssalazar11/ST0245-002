@@ -31,7 +31,35 @@ public class Octree
      * @see nuevoOct
      */
     public void octree (LinkedList<Bee> abejas,ArrayList<Double> mins,double midD,double midW,double midH) {
-       
+        this.midD=midD;
+       this.midW=midW;
+       this.midH=midH;
+        ArrayList<LinkedList<Bee>>octree=mew ArrayList(8);//creacion del octree
+        for(int i; i<8; i++){
+            LinkedList<Bee>abeja=new LinkedList();
+            octree.add(abeja);
+        }
+        for(int i=0;i<abejas.size();i++){
+            Bee abejas=abejas.poll();
+            int cuadrante=hashing(abeja, mins);
+            octree.get(cuadrante).addfirst(abeja);
+        }
+       //1 grado=111325 M
+        double diagonal=Math.sqrt(Math.pow((midD)*111325,2)+Math.pow((midw)*111325,2)+Math.pow((midD)*111325,2));
+        if (diagonal>100){
+            for(int i=0; i<8;++i){
+                if(octree.get(i).size()>1){
+                    nuevoOctree(octree.get(i),mins,i);
+                }
+            }
+        }else {
+            for(int i=0;i<8;i++){
+                if(octree.get(i).size()>0){
+                    choque(octree.get(i));
+                }
+            }
+        }
+    }
     }
 
     /**
@@ -45,7 +73,36 @@ public class Octree
      * @return number of the sector the Bee is located in.
      */
     private int hashing(Bee abeja,ArrayList<Double> mins) {
-       
+       if(abeja.getLatitude()<=mins.get(0)+midD){
+           if(abeja.getLongitude()<=mins.get(1)+midW){
+               if(abeja.getAltitude()<=mins.get(2)+midH){
+                   return 0;
+               }else{
+                   return 1;
+               }
+           }else{
+               if(abeja.getAltitude()<=mins.get(2)+midH){
+                   return 2;
+               }else{
+                   return 3;
+               }
+           }
+       }else{
+           if(abeja.getLongitude()<=mins.get(1)+midW){
+               if(abeja.getAltitude()<=mins.get(2)+midH){
+                   return 4;
+               }else{
+                   return 5;
+               }
+           }else{
+               if(abeja.getAltitude()<=mis.get(2)+midH){
+                   return 6;
+               }else{
+                   return 7;
+               }
+           }
+       }
+    }
     }
 
     /**
@@ -58,7 +115,61 @@ public class Octree
      * @param int sector: sector in which it is located.
      */
     public void nuevoOctree(LinkedList<Bee> abejas,ArrayList<Double> mins,int sector) {
-       
+         if(sector==0){
+           octree(abejas, mins, midD/2, midW/2, midH/2);
+       }else if(sector==1){
+           double newH=mins.get(2)+midH;
+           mins.remove(2);
+           mins.add(2,newH);
+           octree(abejas, mins, midD/2, midW/2, midH/2);
+       }else if(sector==2){
+           double newW=mins.get(1)+midW;
+           mins.remove(1);
+           mins.add(1,newH);
+           octree(abejas, mins, midD/2, midW/2, midH/2);
+       }else if(sector==3){
+           double newH=mins.get(2)+midH;
+           mins.remove(2);
+           mins.add(2,newH);
+           double newW=mins.get(1)+midW;
+           mins.remove(1);
+           mins.add(1,newW);
+           octree(abejas, mins, midD/2, midW/2, midH/2);
+       }else if(sector==4){
+           double newD=mins.get(0)+midD;
+           mins.remove(0);
+           mins.add(0,newD);
+           octree(abejas, mins, midD/2, midW/2, midH/2);
+       }else if(sector==5){
+           double newD=mins.get(0)+midD;
+           mins.remove(0);
+           mins.add(0,newD);
+           double newH=mins.get(2)+midH;
+           mins.remove(2);
+           mins.add(2,newH);
+           octree(abejas, mins, midD/2, midW/2, midH/2);
+       }else if(sector==6){
+           double newD=mins.get(0)+midD;
+           mins.remove(0);
+           mins.add(0,newD);
+           double newW=mins.get(1)+midW;
+           mins.remove(1);
+           mins.add(1,newW);
+           octree(abejas, mins, midD/2, midW/2, midH/2);
+       }else{
+           double newD=mins.get(0)+midD;
+           mins.remove(0);
+           mins.add(0,newD);
+           double newW=mins.get(1)+midW;
+           mins.remove(1);
+           mins.add(1,newW);
+           double newH=mins.get(2)+midH;
+           mins.remove(2);
+           mins.add(2,newH);
+           octree(abejas, mins, midD/2, midW/2, midH/2);
+           
+       }
+    }
     }
 
     /**
